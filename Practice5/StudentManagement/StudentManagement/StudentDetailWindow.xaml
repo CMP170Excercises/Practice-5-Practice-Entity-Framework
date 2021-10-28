@@ -1,0 +1,112 @@
+﻿<Window x:Class="StudentManagement.StudentDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentManagement"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource PrimaryHueDarkBrush}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Student Detail" Height="350" Width="400" >
+
+    <!--<Window.DataContext>
+        <local:StudentDetailViewModel></local:StudentDetailViewModel>
+    </Window.DataContext>-->
+    
+            <Window.Resources>
+        <Style x:Key="LableContent" TargetType="Label">
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+            
+        </Style>
+        <Style x:Key="StyleButton" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+           
+
+        </Style>
+
+        <Style x:Key="styleTextBox" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+
+        </Style>
+
+        <Style x:Key="styleRadioBnt" TargetType="RadioButton">
+            
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+
+        </Style>
+
+        <Style x:Key="StyleComboBoxItem" TargetType="ComboBoxItem">
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="pink" CornerRadius="10" Margin="20">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Label Content="Student ID:" Style="{StaticResource LableContent }" Grid.ColumnSpan="3"></Label>
+                <Label Content="First Name:" Style="{StaticResource LableContent }" Grid.Row="1" Grid.ColumnSpan="3"></Label>
+                <Label Content="Last Name:" Style="{StaticResource LableContent }" Grid.Row="2" Grid.ColumnSpan="3"></Label>
+                <Label Content="Gender:" Style="{StaticResource LableContent }" Grid.Row="3" Grid.ColumnSpan="3"></Label>
+                <Label Content="Class:" Style="{StaticResource LableContent }" Grid.Row="4" Grid.ColumnSpan="3"></Label>
+                <Label Content="Email:" Style="{StaticResource LableContent }" Grid.Row="5" Grid.ColumnSpan="3"></Label>
+                <Button Content="Email:" Style="{StaticResource StyleButton }" Grid.Row="6" Grid.Column="2" ></Button>
+                <Button Content="Save" Style="{StaticResource StyleButton }" Grid.Row="6" Grid.Column="2" Command="{Binding SaveCommand}" Background="cyan" ></Button>
+                <Button Content="Cancle" Style="{StaticResource StyleButton }" Grid.Row="6" Grid.Column="3" Command="{Binding CanCleCommand}" Background="IndianRed"></Button>
+              
+                <TextBox Style="{StaticResource styleTextBox}" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=StudentIddetail}"></TextBox>
+                <TextBox Style="{StaticResource styleTextBox}" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=Firstnamedetail}"></TextBox>
+                <TextBox Style="{StaticResource styleTextBox}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=Lastnamedetail}"></TextBox>
+                <TextBox Style="{StaticResource styleTextBox}" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=Emaildetail}"></TextBox>
+
+                <RadioButton GroupName="gender" Style="{StaticResource styleRadioBnt }" Grid.Row="3" Grid.Column="3" IsChecked="{Binding Ismale}">Male</RadioButton >
+                <RadioButton GroupName="gender" Style="{StaticResource styleRadioBnt }" Grid.Row="3" Grid.Column="4" IsChecked="{Binding IsFemale}">FeMale</RadioButton>
+                <ComboBox Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Center" Text="{Binding  Path=Classdetail}">
+                    <ComboBoxItem IsSelected="True">19DTHQA1</ComboBoxItem>
+                    <ComboBoxItem>19DTHQA2</ComboBoxItem>
+                    <ComboBoxItem>19DTHQA3</ComboBoxItem>
+                </ComboBox>
+
+            </Grid>
+        </StackPanel>
+    </Border>
+ 
+</Window>

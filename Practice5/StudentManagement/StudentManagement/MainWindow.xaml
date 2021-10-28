@@ -1,0 +1,159 @@
+﻿<Window x:Class="StudentManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentManagement"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource SecondaryHueMidBrush}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource SecondaryHueMidBrush}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Hutech Management" Height="550" Width="800">
+
+
+
+    <Window.DataContext>
+        <local:SearchStudentViewModel></local:SearchStudentViewModel>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="styleTextBox" TargetType="TextBox">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+
+        </Style>
+
+        <Style x:Key="StyleComboBox" TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style x:Key="styleTextBlock" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="LableContent" TargetType="Label">
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Brown"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+
+
+        </Style>
+
+        <Style x:Key="StyleButton" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="DarkSalmon"/>
+        </Style>
+        
+        <Style x:Key="StylelistBox" TargetType="ListBox">
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <DataTemplate x:Key="myTaskTemplate">
+            <Border Name="border" BorderBrush="red" BorderThickness="1"
+          Padding="5" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource styleTextBlock}" Text="StudentId:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource styleTextBlock}"  Text="{Binding Path=studentId}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource styleTextBlock}"  Text="Firstname:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource styleTextBlock}"  Text="{Binding Path=firstname}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource styleTextBlock}"  Text="Lastname:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource styleTextBlock}"  Text="{Binding Path=lastname}"/>
+
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <TabControl Margin="5">
+        <TabItem Header="Student">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Label Content="Search Student" Style="{StaticResource LableContent}"></Label>
+                    <Separator></Separator>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource styleTextBox}"  Text="{Binding Path= Searchkeyword}" ToolTip="Input name of Student you want to search"></TextBox>
+                    <ComboBox Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Selectedclass}"  SelectedValuePath="Content" ToolTip="Input Class you want to search">
+                        <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem>19DTHQA1</ComboBoxItem>
+                        <ComboBoxItem>19DTHQA2</ComboBoxItem>
+                        <ComboBoxItem>19DTHQA3</ComboBoxItem>
+
+                    </ComboBox>
+
+                    <Button Grid.Column="5" Content="Search" Style="{StaticResource StyleButton}" Command="{Binding SearchCommand}"></Button>
+                    <Button Grid.Column="6" Content="Reset" Style="{StaticResource StyleButton}" Command="{Binding ResetCommand}"></Button>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <ListBox Grid.Column="0" HorizontalContentAlignment="Stretch" BorderThickness="3" ItemsSource="{Binding Students}" SelectedItem="{Binding Selectedstudent}" ItemTemplate="{StaticResource myTaskTemplate}"  />
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Button HorizontalAlignment="Left" Content="Exit" Background="#FF98C70E" Foreground="Red" FontSize="20" Click="Button_Click"></Button>
+                    <Button Height="30"  HorizontalAlignment="Right" Content="Open Student Detail" Command="{Binding OpenDetailCommand}" BorderBrush="{DynamicResource MaterialDesignSnackbarRipple}" Background="#FF98C70E"></Button>
+                </Grid>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Window>
